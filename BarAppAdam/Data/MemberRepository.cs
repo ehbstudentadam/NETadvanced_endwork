@@ -9,7 +9,40 @@ namespace BarAppAdam.Data
 {
     public class MemberRepository : BaseRepository<Member>
     {
-        
+
+
+
+        public List<Member> GetAllFromTill(int from, int untill)         //make sure maximum till overexceeds testing to be done
+        {
+            using var command = _connection.CreateCommand();
+            command.CommandText = "SELECT [Id] FROM [Members] WHERE [Id] BETWEEN @From AND @Untill";
+            command.Parameters.AddWithValue("@From", from);
+            command.Parameters.AddWithValue("@Untill", untill);
+
+            using var reader = command.ExecuteReader();
+
+            var members = new List<Member>();
+            while (reader.Read())
+            {
+                int databaseId = (int)reader.GetDecimal(0);
+                string firstName = reader.GetString(1);
+                string lastName = reader.GetString(2);
+                string address = reader.GetString(3);
+                string email = reader.GetString(4);
+                decimal wallet = reader.GetDecimal(5);
+                bool isOwner = bool.Parse(reader.GetString(6));
+                DateTime dateTime = DateTime.Parse(reader.GetString(7));
+
+                Member member = new Member(firstName, lastName, address, email, isOwner);
+                member.CreatedDate = dateTime;
+                member.Wallet = wallet;
+                member.Id = databaseId;
+
+                members.Add(member);
+            }
+            return members;
+        }
+
         protected override Member Insert(Member entity)
         {
             using var command = _connection.CreateCommand();

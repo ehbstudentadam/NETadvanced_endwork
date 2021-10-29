@@ -103,14 +103,14 @@
             // OrderHistoryToolStripMenuItem
             // 
             this.OrderHistoryToolStripMenuItem.Name = "OrderHistoryToolStripMenuItem";
-            this.OrderHistoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OrderHistoryToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.OrderHistoryToolStripMenuItem.Text = "Order History";
             this.OrderHistoryToolStripMenuItem.Click += new System.EventHandler(this.OrderHistoryToolStripMenuItem_Click);
             // 
             // MembersToolStripMenuItem
             // 
             this.MembersToolStripMenuItem.Name = "MembersToolStripMenuItem";
-            this.MembersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MembersToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.MembersToolStripMenuItem.Text = "Members";
             this.MembersToolStripMenuItem.Click += new System.EventHandler(this.MembersToolStripMenuItem_Click);
             // 
@@ -126,14 +126,14 @@
             // EditMembersToolStripMenuItem
             // 
             this.EditMembersToolStripMenuItem.Name = "EditMembersToolStripMenuItem";
-            this.EditMembersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditMembersToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.EditMembersToolStripMenuItem.Text = "Edit Members";
             this.EditMembersToolStripMenuItem.Click += new System.EventHandler(this.EditMembersToolStripMenuItem_Click);
             // 
             // EditDrinksToolStripMenuItem
             // 
             this.EditDrinksToolStripMenuItem.Name = "EditDrinksToolStripMenuItem";
-            this.EditDrinksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditDrinksToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.EditDrinksToolStripMenuItem.Text = "Edit Drinks";
             this.EditDrinksToolStripMenuItem.Click += new System.EventHandler(this.EditDrinksToolStripMenuItem_Click);
             // 
@@ -153,7 +153,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";

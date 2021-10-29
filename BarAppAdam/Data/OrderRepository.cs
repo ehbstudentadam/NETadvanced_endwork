@@ -11,7 +11,7 @@ namespace BarAppAdam.Data
 {
     public class OrderRepository : BaseRepository<Order>
     {
-        protected MemberRepository memberRepository = new MemberRepository();
+        protected MemberRepository memberRepository = new();
 
         public override Order? GetEntity(int id)
         {
@@ -28,11 +28,49 @@ namespace BarAppAdam.Data
             Member? member = memberRepository.GetEntity(memberID);
             List<KeyValuePair<Drink, int>> drinks = ConvertStringToKVList(reader.GetString(4));
 
-            Order order = new Order(member, drinks);
+            if (member == null)
+            {
+                throw new Exception("memberID not found when retrieving member from database.");
+            }
+
+            Order order = new(member, drinks);
             order.CreatedDate = dateTime;
+            order.Id = databaseId;
 
             return order;            
         }
+
+        public List<Order> GetAllFromTill(int from, int untill)         //make sure maximum till overexceeds testing to be done
+        {
+            using var command = _connection.CreateCommand();
+            command.CommandText = "SELECT [Id] FROM [Orders] WHERE [Id] BETWEEN @From AND @Untill";
+            command.Parameters.AddWithValue("@From", from);
+            command.Parameters.AddWithValue("@Untill", untill);
+
+            using var reader = command.ExecuteReader();
+
+            var orders = new List<Order>();
+            while (reader.Read())
+            {
+                int databaseId = (int)reader.GetDecimal(0);
+                DateTime dateTime = DateTime.Parse(reader.GetString(1));
+                int memberID = reader.GetInt32(3);
+                Member? member = memberRepository.GetEntity(memberID);
+                List<KeyValuePair<Drink, int>> drinks = ConvertStringToKVList(reader.GetString(4));
+
+                if (member == null)
+                {
+                    throw new Exception("memberID not found when retrieving member from database.");
+                }
+                Order order = new(member, drinks);
+                order.CreatedDate = dateTime;
+                order.Id = databaseId;
+
+                orders.Add(order);
+            }
+            return orders;
+        }
+
 
         protected override Order Insert(Order entity)
         {

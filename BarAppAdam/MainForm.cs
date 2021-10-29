@@ -7,9 +7,9 @@ namespace BarAppAdam
 {
     public partial class MainForm : Form
     {
-        MemberRepository memberRepositorty = new MemberRepository();
+        private readonly MemberRepository memberRepositorty = new();
 
-        private readonly SqlConnection _connection = new SqlConnection();
+
         public MainForm()
         {
             InitializeComponent();

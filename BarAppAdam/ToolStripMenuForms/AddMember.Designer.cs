@@ -30,24 +30,33 @@
         {
             this.AddMemberButton = new System.Windows.Forms.Button();
             this.FirstName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.FirstNameTextbox = new System.Windows.Forms.TextBox();
+            this.LastNameTextbox = new System.Windows.Forms.TextBox();
             this.LastName = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.Address = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.StreetnameTextbox = new System.Windows.Forms.TextBox();
+            this.Emailtextbox = new System.Windows.Forms.TextBox();
             this.Email = new System.Windows.Forms.Label();
-            this.IsOwner = new System.Windows.Forms.CheckBox();
+            this.IsOwnerCheckbox = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.NrTextbox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.CityTextbox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ZipcodeTextbox = new System.Windows.Forms.TextBox();
+            this.CountryTextbox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // AddMemberButton
             // 
-            this.AddMemberButton.Location = new System.Drawing.Point(255, 188);
+            this.AddMemberButton.Location = new System.Drawing.Point(255, 291);
             this.AddMemberButton.Name = "AddMemberButton";
             this.AddMemberButton.Size = new System.Drawing.Size(75, 23);
             this.AddMemberButton.TabIndex = 0;
             this.AddMemberButton.Text = "Add";
             this.AddMemberButton.UseVisualStyleBackColor = true;
+            this.AddMemberButton.Click += new System.EventHandler(this.AddMemberButton_Click);
             // 
             // FirstName
             // 
@@ -58,19 +67,19 @@
             this.FirstName.TabIndex = 1;
             this.FirstName.Text = "First Name:";
             // 
-            // textBox1
+            // FirstNameTextbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(318, 23);
-            this.textBox1.TabIndex = 2;
+            this.FirstNameTextbox.Location = new System.Drawing.Point(12, 27);
+            this.FirstNameTextbox.Name = "FirstNameTextbox";
+            this.FirstNameTextbox.Size = new System.Drawing.Size(318, 23);
+            this.FirstNameTextbox.TabIndex = 2;
             // 
-            // textBox2
+            // LastNameTextbox
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(318, 23);
-            this.textBox2.TabIndex = 4;
+            this.LastNameTextbox.Location = new System.Drawing.Point(12, 71);
+            this.LastNameTextbox.Name = "LastNameTextbox";
+            this.LastNameTextbox.Size = new System.Drawing.Size(318, 23);
+            this.LastNameTextbox.TabIndex = 4;
             // 
             // LastName
             // 
@@ -81,61 +90,133 @@
             this.LastName.TabIndex = 3;
             this.LastName.Text = "Last Name:";
             // 
-            // textBox3
+            // StreetnameTextbox
             // 
-            this.textBox3.Location = new System.Drawing.Point(12, 115);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(318, 23);
-            this.textBox3.TabIndex = 6;
+            this.StreetnameTextbox.Location = new System.Drawing.Point(12, 130);
+            this.StreetnameTextbox.Name = "StreetnameTextbox";
+            this.StreetnameTextbox.Size = new System.Drawing.Size(237, 23);
+            this.StreetnameTextbox.TabIndex = 6;
             // 
-            // Address
+            // Emailtextbox
             // 
-            this.Address.AutoSize = true;
-            this.Address.Location = new System.Drawing.Point(12, 97);
-            this.Address.Name = "Address";
-            this.Address.Size = new System.Drawing.Size(189, 15);
-            this.Address.TabIndex = 5;
-            this.Address.Text = "Address ( Streetname Nr Zip City ):";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(12, 159);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(318, 23);
-            this.textBox4.TabIndex = 8;
+            this.Emailtextbox.Location = new System.Drawing.Point(12, 262);
+            this.Emailtextbox.Name = "Emailtextbox";
+            this.Emailtextbox.Size = new System.Drawing.Size(318, 23);
+            this.Emailtextbox.TabIndex = 8;
             // 
             // Email
             // 
             this.Email.AutoSize = true;
-            this.Email.Location = new System.Drawing.Point(12, 141);
+            this.Email.Location = new System.Drawing.Point(12, 244);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(36, 15);
             this.Email.TabIndex = 7;
             this.Email.Text = "Email";
             // 
-            // IsOwner
+            // IsOwnerCheckbox
             // 
-            this.IsOwner.AutoSize = true;
-            this.IsOwner.Location = new System.Drawing.Point(12, 188);
-            this.IsOwner.Name = "IsOwner";
-            this.IsOwner.Size = new System.Drawing.Size(139, 19);
-            this.IsOwner.TabIndex = 10;
-            this.IsOwner.Text = "Make member owner";
-            this.IsOwner.UseVisualStyleBackColor = true;
+            this.IsOwnerCheckbox.AutoSize = true;
+            this.IsOwnerCheckbox.Location = new System.Drawing.Point(12, 291);
+            this.IsOwnerCheckbox.Name = "IsOwnerCheckbox";
+            this.IsOwnerCheckbox.Size = new System.Drawing.Size(139, 19);
+            this.IsOwnerCheckbox.TabIndex = 10;
+            this.IsOwnerCheckbox.Text = "Make member owner";
+            this.IsOwnerCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 112);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 15);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Streetname:";
+            // 
+            // NrTextbox
+            // 
+            this.NrTextbox.Location = new System.Drawing.Point(255, 130);
+            this.NrTextbox.Name = "NrTextbox";
+            this.NrTextbox.Size = new System.Drawing.Size(75, 23);
+            this.NrTextbox.TabIndex = 12;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(255, 112);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 15);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Nr:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(157, 156);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 15);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "City";
+            // 
+            // CityTextbox
+            // 
+            this.CityTextbox.Location = new System.Drawing.Point(157, 174);
+            this.CityTextbox.Name = "CityTextbox";
+            this.CityTextbox.Size = new System.Drawing.Size(173, 23);
+            this.CityTextbox.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 156);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(52, 15);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "ZipCode";
+            // 
+            // ZipcodeTextbox
+            // 
+            this.ZipcodeTextbox.Location = new System.Drawing.Point(12, 174);
+            this.ZipcodeTextbox.Name = "ZipcodeTextbox";
+            this.ZipcodeTextbox.Size = new System.Drawing.Size(139, 23);
+            this.ZipcodeTextbox.TabIndex = 14;
+            // 
+            // CountryTextbox
+            // 
+            this.CountryTextbox.Location = new System.Drawing.Point(12, 218);
+            this.CountryTextbox.Name = "CountryTextbox";
+            this.CountryTextbox.Size = new System.Drawing.Size(318, 23);
+            this.CountryTextbox.TabIndex = 18;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 200);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 15);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Country";
             // 
             // AddMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(342, 222);
-            this.Controls.Add(this.IsOwner);
-            this.Controls.Add(this.textBox4);
+            this.ClientSize = new System.Drawing.Size(346, 332);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.CountryTextbox);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.CityTextbox);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.ZipcodeTextbox);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.NrTextbox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.IsOwnerCheckbox);
+            this.Controls.Add(this.Emailtextbox);
             this.Controls.Add(this.Email);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.Address);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.StreetnameTextbox);
+            this.Controls.Add(this.LastNameTextbox);
             this.Controls.Add(this.LastName);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.FirstNameTextbox);
             this.Controls.Add(this.FirstName);
             this.Controls.Add(this.AddMemberButton);
             this.Name = "AddMember";
@@ -149,13 +230,21 @@
 
         private Button AddMemberButton;
         private Label FirstName;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox FirstNameTextbox;
+        private TextBox LastNameTextbox;
         private Label LastName;
-        private TextBox textBox3;
-        private Label Address;
-        private TextBox textBox4;
+        private TextBox StreetnameTextbox;
+        private TextBox Emailtextbox;
         private Label Email;
-        private CheckBox IsOwner;
+        private CheckBox IsOwnerCheckbox;
+        private Label label1;
+        private TextBox NrTextbox;
+        private Label label2;
+        private Label label3;
+        private TextBox CityTextbox;
+        private Label label4;
+        private TextBox ZipcodeTextbox;
+        private TextBox CountryTextbox;
+        private Label label5;
     }
 }
