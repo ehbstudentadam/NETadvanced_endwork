@@ -49,7 +49,7 @@ namespace BarAppAdam.Data
             command.ExecuteNonQuery();
         }
 
-        protected override Member? GetEntity(int id)
+        public override Member? GetEntity(int id)
         {
             using var command = _connection.CreateCommand();
             command.CommandText = "SELECT [Id] FROM [Members] WHERE [Id] = @Id";

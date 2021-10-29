@@ -11,7 +11,7 @@ namespace BarAppAdam.Entities
     {
         public Member Member { get; set; }
         public List<KeyValuePair<Drink, int>> Drinks { get; set; }
-        public DateTime CreatedDate { get; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
         public Decimal PriceTotal { get; set; }
 
 

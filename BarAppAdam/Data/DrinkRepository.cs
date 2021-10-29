@@ -37,7 +37,7 @@ namespace BarAppAdam
             command.ExecuteNonQuery();
         }
 
-        protected override Drink? GetEntity(int id)
+        public override Drink? GetEntity(int id)
         {
             using var command = _connection.CreateCommand();
             command.CommandText = "SELECT [Id] FROM [Drinks] WHERE [Id] = @Id";

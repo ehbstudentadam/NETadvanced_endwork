@@ -27,7 +27,7 @@ namespace BarAppAdam.Data
             return entity;
         }
 
-        protected abstract TEntity? GetEntity(int id);
+        public abstract TEntity? GetEntity(int id);
         protected abstract TEntity Insert(TEntity entity);
         protected abstract void Update(TEntity entity);
 
