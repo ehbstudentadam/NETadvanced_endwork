@@ -32,13 +32,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.LoginButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.orderHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.membersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OrderHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MembersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editMembersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editDrinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditMembersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditDrinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,9 +73,10 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem,
+            this.AddMemberToolStripMenuItem,
             this.settingsToolStripMenuItem1,
-            this.settingsToolStripMenuItem2});
+            this.settingsToolStripMenuItem2,
+            this.ExitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(950, 24);
@@ -82,53 +84,65 @@
             this.menuStrip1.Text = "Settings";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
-            // settingsToolStripMenuItem
+            // AddMemberToolStripMenuItem
             // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.settingsToolStripMenuItem.Text = "Add Member";
+            this.AddMemberToolStripMenuItem.Name = "AddMemberToolStripMenuItem";
+            this.AddMemberToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.AddMemberToolStripMenuItem.Text = "Add Member";
+            this.AddMemberToolStripMenuItem.Click += new System.EventHandler(this.AddMemberToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem1
             // 
             this.settingsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.orderHistoryToolStripMenuItem,
-            this.membersToolStripMenuItem});
+            this.OrderHistoryToolStripMenuItem,
+            this.MembersToolStripMenuItem});
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
             this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
             this.settingsToolStripMenuItem1.Text = "View";
             // 
-            // orderHistoryToolStripMenuItem
+            // OrderHistoryToolStripMenuItem
             // 
-            this.orderHistoryToolStripMenuItem.Name = "orderHistoryToolStripMenuItem";
-            this.orderHistoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.orderHistoryToolStripMenuItem.Text = "Order History";
+            this.OrderHistoryToolStripMenuItem.Name = "OrderHistoryToolStripMenuItem";
+            this.OrderHistoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OrderHistoryToolStripMenuItem.Text = "Order History";
+            this.OrderHistoryToolStripMenuItem.Click += new System.EventHandler(this.OrderHistoryToolStripMenuItem_Click);
             // 
-            // membersToolStripMenuItem
+            // MembersToolStripMenuItem
             // 
-            this.membersToolStripMenuItem.Name = "membersToolStripMenuItem";
-            this.membersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.membersToolStripMenuItem.Text = "Members";
+            this.MembersToolStripMenuItem.Name = "MembersToolStripMenuItem";
+            this.MembersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MembersToolStripMenuItem.Text = "Members";
+            this.MembersToolStripMenuItem.Click += new System.EventHandler(this.MembersToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem2
             // 
             this.settingsToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editMembersToolStripMenuItem,
-            this.editDrinksToolStripMenuItem});
+            this.EditMembersToolStripMenuItem,
+            this.EditDrinksToolStripMenuItem});
             this.settingsToolStripMenuItem2.Name = "settingsToolStripMenuItem2";
             this.settingsToolStripMenuItem2.Size = new System.Drawing.Size(39, 20);
             this.settingsToolStripMenuItem2.Text = "Edit";
             // 
-            // editMembersToolStripMenuItem
+            // EditMembersToolStripMenuItem
             // 
-            this.editMembersToolStripMenuItem.Name = "editMembersToolStripMenuItem";
-            this.editMembersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editMembersToolStripMenuItem.Text = "Edit Members";
+            this.EditMembersToolStripMenuItem.Name = "EditMembersToolStripMenuItem";
+            this.EditMembersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditMembersToolStripMenuItem.Text = "Edit Members";
+            this.EditMembersToolStripMenuItem.Click += new System.EventHandler(this.EditMembersToolStripMenuItem_Click);
             // 
-            // editDrinksToolStripMenuItem
+            // EditDrinksToolStripMenuItem
             // 
-            this.editDrinksToolStripMenuItem.Name = "editDrinksToolStripMenuItem";
-            this.editDrinksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editDrinksToolStripMenuItem.Text = "Edit Drinks";
+            this.EditDrinksToolStripMenuItem.Name = "EditDrinksToolStripMenuItem";
+            this.EditDrinksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditDrinksToolStripMenuItem.Text = "Edit Drinks";
+            this.EditDrinksToolStripMenuItem.Click += new System.EventHandler(this.EditDrinksToolStripMenuItem_Click);
+            // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.ExitToolStripMenuItem.Text = "Exit";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -158,12 +172,13 @@
         private Label label2;
         private Button LoginButton;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem settingsToolStripMenuItem;
+        private ToolStripMenuItem AddMemberToolStripMenuItem;
         private ToolStripMenuItem settingsToolStripMenuItem1;
-        private ToolStripMenuItem orderHistoryToolStripMenuItem;
-        private ToolStripMenuItem membersToolStripMenuItem;
+        private ToolStripMenuItem OrderHistoryToolStripMenuItem;
+        private ToolStripMenuItem MembersToolStripMenuItem;
         private ToolStripMenuItem settingsToolStripMenuItem2;
-        private ToolStripMenuItem editMembersToolStripMenuItem;
-        private ToolStripMenuItem editDrinksToolStripMenuItem;
+        private ToolStripMenuItem EditMembersToolStripMenuItem;
+        private ToolStripMenuItem EditDrinksToolStripMenuItem;
+        private ToolStripMenuItem ExitToolStripMenuItem;
     }
 }
