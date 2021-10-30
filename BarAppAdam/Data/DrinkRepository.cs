@@ -69,9 +69,13 @@ namespace BarAppAdam
             {
                 drinkFromDatabase = new Cocktail();
             }
+            if (drinkFromDatabase == null)
+            {
+                return null;
+            }
+            drinkFromDatabase.Id = id;
 
-            return drinkFromDatabase;
- 
+            return drinkFromDatabase; 
         }
     }
 }

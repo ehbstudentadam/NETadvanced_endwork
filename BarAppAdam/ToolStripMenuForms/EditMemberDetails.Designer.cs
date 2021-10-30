@@ -52,6 +52,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.RemoveAmountTextbox = new System.Windows.Forms.TextBox();
+            this.DoneButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label5
@@ -200,6 +201,7 @@
             this.SaveChangesButton.TabIndex = 20;
             this.SaveChangesButton.Text = "Save Changes";
             this.SaveChangesButton.UseVisualStyleBackColor = true;
+            this.SaveChangesButton.Click += new System.EventHandler(this.SaveChangesButton_Click);
             // 
             // label6
             // 
@@ -251,11 +253,22 @@
             this.RemoveAmountTextbox.Size = new System.Drawing.Size(209, 23);
             this.RemoveAmountTextbox.TabIndex = 42;
             // 
+            // DoneButton
+            // 
+            this.DoneButton.Location = new System.Drawing.Point(679, 287);
+            this.DoneButton.Name = "DoneButton";
+            this.DoneButton.Size = new System.Drawing.Size(98, 23);
+            this.DoneButton.TabIndex = 44;
+            this.DoneButton.Text = "Done";
+            this.DoneButton.UseVisualStyleBackColor = true;
+            this.DoneButton.Click += new System.EventHandler(this.DoneButton_Click);
+            // 
             // EditMemberDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 333);
+            this.Controls.Add(this.DoneButton);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.RemoveAmountTextbox);
             this.Controls.Add(this.label8);
@@ -313,5 +326,6 @@
         private Label label8;
         private Label label9;
         private TextBox RemoveAmountTextbox;
+        private Button DoneButton;
     }
 }

@@ -42,7 +42,9 @@ namespace BarAppAdam.ToolStripMenuForms
                 return;
             }
 
-
+            EditMemberDetails editMemberDetails = new(fromRepository);
+            editMemberDetails.Show();
+            this.Close();
         }
     }
 }
