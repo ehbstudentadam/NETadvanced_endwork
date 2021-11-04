@@ -16,11 +16,16 @@ namespace BarAppAdam.Data
         public override Order? GetEntity(int id)
         {
             using var command = _connection.CreateCommand();
-            command.CommandText = "SELECT [Id] FROM [Orders] WHERE [Id] = @Id";
+            command.CommandText = "SELECT [Id], [CreatedDate], [Member], [MemberID], [Drinks], [PriceTotal] FROM [Orders] WHERE [Id] = @Id";
             command.Parameters.AddWithValue("@Id", id);
 
             using var reader = command.ExecuteReader();
             reader.Read();
+
+            if (!reader.HasRows)
+            {
+                return null;
+            }
 
             int databaseId = (int)reader.GetDecimal(0);
             DateTime dateTime = DateTime.Parse(reader.GetString(1));
@@ -43,7 +48,7 @@ namespace BarAppAdam.Data
         public List<Order> GetAllFromTill(int from, int untill)         //make sure maximum till overexceeds testing to be done
         {
             using var command = _connection.CreateCommand();
-            command.CommandText = "SELECT [Id] FROM [Orders] WHERE [Id] BETWEEN @From AND @Untill";
+            command.CommandText = "SELECT [Id], [CreatedDate], [Member], [MemberID], [Drinks], [PriceTotal] FROM [Orders] WHERE [Id] BETWEEN @From AND @Untill";
             command.Parameters.AddWithValue("@From", from);
             command.Parameters.AddWithValue("@Untill", untill);
 
@@ -94,8 +99,9 @@ namespace BarAppAdam.Data
         protected override void Update(Order entity)
         {
             using var command = _connection.CreateCommand();
-            command.CommandText = "INSERT INTO [Orders] ([CreatedDate], [Member], [MemberID], [Drinks], [PriceTotal])" +
-                "VALUES (@CreatedDate, @Member, @MemberID, @Drinks, @PriceTotal);";
+            command.CommandText = "UPDATE [Orders] SET [CreatedDate] = @CreatedDate, [Member] = @Member, [MemberID] = @MemberID, " +
+                "[Drinks] = @Drinks, [PriceTotal] = @PriceTotal WHERE [Id] = @Id";
+            command.Parameters.AddWithValue("@Id", entity.Id);
             command.Parameters.AddWithValue("@CreatedDate", entity.CreatedDate.ToString());
             command.Parameters.AddWithValue("@Member", entity.Member.ToString());
             command.Parameters.AddWithValue("@MemberID", entity.Member.Id);

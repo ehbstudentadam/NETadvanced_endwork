@@ -27,6 +27,8 @@ namespace BarAppAdam.ToolStripMenuForms
         private void SaveChangesButton_Click(object sender, EventArgs e)
         {
             CheckAllChangesAndApply();
+            AddAmountTextbox.Text = null;
+            RemoveAmountTextbox.Text = null;
             LoadMemberIntoFields();
         }
 
@@ -95,6 +97,8 @@ namespace BarAppAdam.ToolStripMenuForms
         private void DoneButton_Click(object sender, EventArgs e)
         {
             CheckAllChangesAndApply();
+            AddAmountTextbox.Text = null;
+            RemoveAmountTextbox.Text = null;
             LoadMemberIntoFields();            
             memberRepository.Save(fromRepository);
             System.Threading.Thread.Sleep(1000);

@@ -80,7 +80,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(424, 390);
+            this.label1.Location = new System.Drawing.Point(424, 354);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 15);
             this.label1.TabIndex = 87;
@@ -88,7 +88,7 @@
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(630, 666);
+            this.Cancel.Location = new System.Drawing.Point(630, 630);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(200, 60);
             this.Cancel.TabIndex = 86;
@@ -97,7 +97,7 @@
             // 
             // Done
             // 
-            this.Done.Location = new System.Drawing.Point(630, 390);
+            this.Done.Location = new System.Drawing.Point(630, 354);
             this.Done.Name = "Done";
             this.Done.Size = new System.Drawing.Size(200, 250);
             this.Done.TabIndex = 85;
@@ -106,7 +106,7 @@
             // 
             // ViewOrder
             // 
-            this.ViewOrder.Location = new System.Drawing.Point(424, 408);
+            this.ViewOrder.Location = new System.Drawing.Point(424, 372);
             this.ViewOrder.Name = "ViewOrder";
             this.ViewOrder.Size = new System.Drawing.Size(200, 318);
             this.ViewOrder.TabIndex = 84;
@@ -211,7 +211,7 @@
             // Countershot
             // 
             this.Countershot.AutoSize = true;
-            this.Countershot.Location = new System.Drawing.Point(132, 608);
+            this.Countershot.Location = new System.Drawing.Point(132, 572);
             this.Countershot.Name = "Countershot";
             this.Countershot.Size = new System.Drawing.Size(50, 15);
             this.Countershot.TabIndex = 102;
@@ -219,7 +219,7 @@
             // 
             // AddShot
             // 
-            this.AddShot.Location = new System.Drawing.Point(122, 646);
+            this.AddShot.Location = new System.Drawing.Point(122, 610);
             this.AddShot.Name = "AddShot";
             this.AddShot.Size = new System.Drawing.Size(80, 80);
             this.AddShot.TabIndex = 101;
@@ -228,7 +228,7 @@
             // 
             // RemoveShot
             // 
-            this.RemoveShot.Location = new System.Drawing.Point(21, 646);
+            this.RemoveShot.Location = new System.Drawing.Point(21, 610);
             this.RemoveShot.Name = "RemoveShot";
             this.RemoveShot.Size = new System.Drawing.Size(80, 80);
             this.RemoveShot.TabIndex = 100;
@@ -237,7 +237,7 @@
             // 
             // PictureShot
             // 
-            this.PictureShot.Location = new System.Drawing.Point(12, 390);
+            this.PictureShot.Location = new System.Drawing.Point(12, 354);
             this.PictureShot.Name = "PictureShot";
             this.PictureShot.Size = new System.Drawing.Size(200, 250);
             this.PictureShot.TabIndex = 99;
@@ -246,7 +246,7 @@
             // CounterCocktail
             // 
             this.CounterCocktail.AutoSize = true;
-            this.CounterCocktail.Location = new System.Drawing.Point(338, 608);
+            this.CounterCocktail.Location = new System.Drawing.Point(338, 572);
             this.CounterCocktail.Name = "CounterCocktail";
             this.CounterCocktail.Size = new System.Drawing.Size(50, 15);
             this.CounterCocktail.TabIndex = 106;
@@ -254,7 +254,7 @@
             // 
             // AddCocktail
             // 
-            this.AddCocktail.Location = new System.Drawing.Point(328, 646);
+            this.AddCocktail.Location = new System.Drawing.Point(328, 610);
             this.AddCocktail.Name = "AddCocktail";
             this.AddCocktail.Size = new System.Drawing.Size(80, 80);
             this.AddCocktail.TabIndex = 105;
@@ -263,7 +263,7 @@
             // 
             // RemoveCocktail
             // 
-            this.RemoveCocktail.Location = new System.Drawing.Point(227, 646);
+            this.RemoveCocktail.Location = new System.Drawing.Point(227, 610);
             this.RemoveCocktail.Name = "RemoveCocktail";
             this.RemoveCocktail.Size = new System.Drawing.Size(80, 80);
             this.RemoveCocktail.TabIndex = 104;
@@ -272,7 +272,7 @@
             // 
             // PictureCocktail
             // 
-            this.PictureCocktail.Location = new System.Drawing.Point(218, 390);
+            this.PictureCocktail.Location = new System.Drawing.Point(218, 354);
             this.PictureCocktail.Name = "PictureCocktail";
             this.PictureCocktail.Size = new System.Drawing.Size(200, 250);
             this.PictureCocktail.TabIndex = 103;
@@ -282,7 +282,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 749);
+            this.ClientSize = new System.Drawing.Size(850, 709);
             this.Controls.Add(this.CounterCocktail);
             this.Controls.Add(this.AddCocktail);
             this.Controls.Add(this.RemoveCocktail);

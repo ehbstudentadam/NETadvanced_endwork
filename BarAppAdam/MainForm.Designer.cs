@@ -103,15 +103,15 @@
             // OrderHistoryToolStripMenuItem
             // 
             this.OrderHistoryToolStripMenuItem.Name = "OrderHistoryToolStripMenuItem";
-            this.OrderHistoryToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.OrderHistoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.OrderHistoryToolStripMenuItem.Text = "Order History";
             this.OrderHistoryToolStripMenuItem.Click += new System.EventHandler(this.OrderHistoryToolStripMenuItem_Click);
             // 
             // MembersToolStripMenuItem
             // 
             this.MembersToolStripMenuItem.Name = "MembersToolStripMenuItem";
-            this.MembersToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.MembersToolStripMenuItem.Text = "Members";
+            this.MembersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MembersToolStripMenuItem.Text = "All Members";
             this.MembersToolStripMenuItem.Click += new System.EventHandler(this.MembersToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem2

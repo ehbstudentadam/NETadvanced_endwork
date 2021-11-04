@@ -1,4 +1,8 @@
-﻿DROP TABLE IF EXISTS Drinks;
+﻿-- Disable constraints for all tables in the database:
+EXEC sp_msforeachtable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL'
+
+
+DROP TABLE IF EXISTS Drinks;
 DROP TABLE IF EXISTS Members;
 DROP TABLE IF EXISTS Orders;
 
@@ -31,3 +35,7 @@ CREATE TABLE Orders (
 	PRIMARY KEY (id),
 	FOREIGN KEY (MemberID) REFERENCES Members(Id)
 );
+
+-- Re-enable constraints for all tables in the database:
+EXEC sp_msforeachtable 'ALTER TABLE ? WITH CHECK CHECK CONSTRAINT ALL'
+---------------------------------------------------------

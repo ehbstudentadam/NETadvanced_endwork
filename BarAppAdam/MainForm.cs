@@ -1,5 +1,6 @@
 using BarAppAdam.Data;
 using BarAppAdam.Entities;
+using BarAppAdam.Entities.Drinks;
 using BarAppAdam.ToolStripMenuForms;
 using System.Data.SqlClient;
 
@@ -8,16 +9,25 @@ namespace BarAppAdam
     public partial class MainForm : Form
     {
         private readonly MemberRepository memberRepositorty = new();
+        private readonly DrinkRepository drinkRepository = new();
+        private Beer? beer;
+        private Wine? wine;
+        private Softdrink? softdrink;
+        private Shot? shot;
+        private Cocktail? cocktail;
+        private Member? member;
+
 
 
         public MainForm()
         {
             InitializeComponent();
+            LoadDatabaseForFirstTimeUse();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //menuStrip1.Hide();
+            menuStrip1.Hide();
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -124,6 +134,59 @@ namespace BarAppAdam
             EditDrink editDrink = new();
             editDrink.TopMost = true;
             editDrink.Show();
+
+
+        }
+
+        private void LoadDatabaseForFirstTimeUse()
+        {
+            try
+            {
+                beer = (Beer?)drinkRepository.GetEntity(1);
+                wine = (Wine?)drinkRepository.GetEntity(2);
+                softdrink = (Softdrink?)drinkRepository.GetEntity(3);
+                shot = (Shot?)drinkRepository.GetEntity(4);
+                cocktail = (Cocktail?)drinkRepository.GetEntity(5);
+                member = (Member?)memberRepositorty.GetEntity(1);
+            }
+            catch (System.InvalidCastException e)
+            {
+                drinkRepository.TruncateTable();
+                MessageBox.Show($"Drink database has been wrongly manipulated. Table will be truncated and reinitiated. ({e.Message})", "Manipulation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoadDatabaseForFirstTimeUse();
+                return;
+            }
+
+
+            if (beer == null)
+            {
+                drinkRepository.Save(new Beer());                
+            }
+            if (wine == null)
+            {
+                drinkRepository.Save(new Wine());
+            }
+            if (softdrink == null)
+            {
+                drinkRepository.Save(new Softdrink());
+            }
+            if (shot == null)
+            {
+                drinkRepository.Save(new Shot());
+            }
+            if (cocktail == null)
+            {
+                drinkRepository.Save(new Cocktail());
+            }
+            if (member == null)
+            {
+                memberRepositorty.Save(new Member("admin", "admin", "admin 00 0000 admin admin", "admin", true));
+                return;
+            }
+            if (member.FirstName != "admin")
+            {
+                memberRepositorty.Save(new Member("admin", "admin", "admin 00 0000 admin admin", "admin", true) { Id = 1 });
+            }
         }
     }
 }

@@ -23,23 +23,18 @@ namespace BarAppAdam.ToolStripMenuForms
         public EditDrink()
         {
             InitializeComponent();
-            LoadDrinkDetails();
+            LoadDrinksFromDatabaseIntoThisClassToEdit();
+            LoadDetailsToForm();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
             CheckAllChangesAndApply();
-            LoadDrinkDetails();
+            LoadDetailsToForm();
         }
 
-        private void LoadDrinkDetails()
-        {
-            beer = (Beer?)drinkRepository.GetEntity(0);
-            wine = (Wine?)drinkRepository.GetEntity(1);
-            softdrink = (Softdrink?)drinkRepository.GetEntity(2);
-            shot = (Shot?)drinkRepository.GetEntity(3);
-            cocktail = (Cocktail?)drinkRepository.GetEntity(4);
-
+        private void LoadDetailsToForm()
+        {     
             if (beer == null || wine == null || softdrink == null || shot == null || cocktail == null)
             {
                 return;
@@ -51,21 +46,22 @@ namespace BarAppAdam.ToolStripMenuForms
             PriceShotTextbox.Text = Convert.ToString(shot.Price);
             PriceCocktailTextbox.Text = Convert.ToString(cocktail.Price);
 
-            CurrentPriceBeerLabel.Text = $"Euro. (Current price: {Convert.ToString(beer.Price)})";
-            CurrentPriceWineLabel.Text = $"Euro. (Current price: {Convert.ToString(wine.Price)})";
-            CurrentPriceSoftdrinkLabel.Text = $"Euro. (Current price: {Convert.ToString(softdrink.Price)})";
-            CurrentPriceShotLabel.Text = $"Euro. (Current price: {Convert.ToString(shot.Price)})";
-            CurrentPriceCocktailLabel.Text = $"Euro. (Current price: {Convert.ToString(cocktail.Price)})";
+            CurrentPriceBeerLabel.Text = $"> Current price: {Convert.ToString(beer.Price)}";
+            CurrentPriceWineLabel.Text = $"> Current price: {Convert.ToString(wine.Price)}";
+            CurrentPriceSoftdrinkLabel.Text = $"> Current price: {Convert.ToString(softdrink.Price)}";
+            CurrentPriceShotLabel.Text = $"> Current price: {Convert.ToString(shot.Price)}";
+            CurrentPriceCocktailLabel.Text = $"> Current price: {Convert.ToString(cocktail.Price)}";
         }
 
         private void CheckAllChangesAndApply()
         {
+
             if (PriceBeerTextbox.Text == null || PriceWineTextbox.Text == null || PriceSoftdrinkTextbox.Text == null || PriceShotTextbox.Text == null || PriceCocktailTextbox.Text == null)
             {
                 MessageBox.Show("All fields must have a price.", "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            if(beer == null || wine == null || softdrink == null || shot == null || cocktail == null)
+            if (beer == null || wine == null || softdrink == null || shot == null || cocktail == null)
             {
                 return;
             }
@@ -73,7 +69,7 @@ namespace BarAppAdam.ToolStripMenuForms
             if (PriceBeerTextbox.Text != Convert.ToString(beer.Price) && decimal.TryParse(PriceBeerTextbox.Text, out _))
             {
                 decimal price = Convert.ToDecimal(PriceBeerTextbox.Text);
-                beer.Price = price;
+                this.beer.Price = price;
             }
             if (PriceWineTextbox.Text != Convert.ToString(wine.Price) && decimal.TryParse(PriceWineTextbox.Text, out _))
             {
@@ -111,13 +107,32 @@ namespace BarAppAdam.ToolStripMenuForms
             drinkRepository.Save(cocktail);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void DoneButton_Click(object sender, EventArgs e)
         {
             CheckAllChangesAndApply();
-            LoadDrinkDetails();            
+            LoadDetailsToForm();            
             LoadDrinksToDatabase();
             System.Threading.Thread.Sleep(1000);
             this.Close();
+        }
+
+        private void LoadDrinksFromDatabaseIntoThisClassToEdit()
+        {
+            try
+            {
+                beer = (Beer?)drinkRepository.GetEntity(1);
+                wine = (Wine?)drinkRepository.GetEntity(2);
+                softdrink = (Softdrink?)drinkRepository.GetEntity(3);
+                shot = (Shot?)drinkRepository.GetEntity(4);
+                cocktail = (Cocktail?)drinkRepository.GetEntity(5);
+            }
+            catch (System.InvalidCastException e)
+            {
+                drinkRepository.TruncateTable();
+                MessageBox.Show($"Drink database has been wrongly manipulated. Table will be truncated and reinitiated. ({e.Message})", "Manipulation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoadDetailsToForm();
+                return;
+            }
         }
     }
 }

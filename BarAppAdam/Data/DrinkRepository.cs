@@ -29,7 +29,7 @@ namespace BarAppAdam
         protected override void Update(Drink entity)
         {
             using var command = _connection.CreateCommand();
-            command.CommandText = "UPDATE [Drinks] SET [Type] = @Type, [Price] = @Price WHERE [Id] = @Id";
+            command.CommandText = "UPDATE [Drinks] SET [DrinkType] = @Type, [Price] = @Price WHERE [Id] = @Id";
             command.Parameters.AddWithValue("@Id", entity.Id);
             command.Parameters.AddWithValue("@Price", entity.Price);
             command.Parameters.AddWithValue("@Type", entity.Type.ToString());
@@ -40,11 +40,16 @@ namespace BarAppAdam
         public override Drink? GetEntity(int id)
         {
             using var command = _connection.CreateCommand();
-            command.CommandText = "SELECT [Id] FROM [Drinks] WHERE [Id] = @Id";
+            command.CommandText = "SELECT [Id], [DrinkType], [Price] FROM [Drinks] WHERE [Id] = @Id";
             command.Parameters.AddWithValue("@Id", id);
 
             using var reader = command.ExecuteReader();
             reader.Read();
+
+            if (!reader.HasRows)
+            {
+                return null;
+            }
 
             string drinkTypeFromDatabase = reader.GetString(1);
             Drink? drinkFromDatabase = null;
@@ -74,8 +79,18 @@ namespace BarAppAdam
                 return null;
             }
             drinkFromDatabase.Id = id;
+            drinkFromDatabase.Price = reader.GetDecimal(2);
 
             return drinkFromDatabase; 
         }
+
+        public void TruncateTable()
+        {
+            using var command = _connection.CreateCommand();
+            command.CommandText = "TRUNCATE TABLE [Drinks]";
+
+            command.ExecuteNonQuery();
+        }
+
     }
 }

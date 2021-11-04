@@ -129,9 +129,9 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(246, 169);
+            this.SaveButton.Location = new System.Drawing.Point(262, 184);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(113, 23);
+            this.SaveButton.Size = new System.Drawing.Size(147, 23);
             this.SaveButton.TabIndex = 10;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
             // CurrentPriceCocktailLabel
             // 
             this.CurrentPriceCocktailLabel.AutoSize = true;
-            this.CurrentPriceCocktailLabel.Location = new System.Drawing.Point(246, 131);
+            this.CurrentPriceCocktailLabel.Location = new System.Drawing.Point(262, 131);
             this.CurrentPriceCocktailLabel.Name = "CurrentPriceCocktailLabel";
             this.CurrentPriceCocktailLabel.Size = new System.Drawing.Size(82, 15);
             this.CurrentPriceCocktailLabel.TabIndex = 15;
@@ -149,7 +149,7 @@
             // CurrentPriceShotLabel
             // 
             this.CurrentPriceShotLabel.AutoSize = true;
-            this.CurrentPriceShotLabel.Location = new System.Drawing.Point(246, 102);
+            this.CurrentPriceShotLabel.Location = new System.Drawing.Point(262, 102);
             this.CurrentPriceShotLabel.Name = "CurrentPriceShotLabel";
             this.CurrentPriceShotLabel.Size = new System.Drawing.Size(63, 15);
             this.CurrentPriceShotLabel.TabIndex = 14;
@@ -158,7 +158,7 @@
             // CurrentPriceSoftdrinkLabel
             // 
             this.CurrentPriceSoftdrinkLabel.AutoSize = true;
-            this.CurrentPriceSoftdrinkLabel.Location = new System.Drawing.Point(246, 73);
+            this.CurrentPriceSoftdrinkLabel.Location = new System.Drawing.Point(262, 73);
             this.CurrentPriceSoftdrinkLabel.Name = "CurrentPriceSoftdrinkLabel";
             this.CurrentPriceSoftdrinkLabel.Size = new System.Drawing.Size(87, 15);
             this.CurrentPriceSoftdrinkLabel.TabIndex = 13;
@@ -167,7 +167,7 @@
             // CurrentPriceWineLabel
             // 
             this.CurrentPriceWineLabel.AutoSize = true;
-            this.CurrentPriceWineLabel.Location = new System.Drawing.Point(246, 44);
+            this.CurrentPriceWineLabel.Location = new System.Drawing.Point(262, 44);
             this.CurrentPriceWineLabel.Name = "CurrentPriceWineLabel";
             this.CurrentPriceWineLabel.Size = new System.Drawing.Size(66, 15);
             this.CurrentPriceWineLabel.TabIndex = 12;
@@ -176,7 +176,7 @@
             // CurrentPriceBeerLabel
             // 
             this.CurrentPriceBeerLabel.AutoSize = true;
-            this.CurrentPriceBeerLabel.Location = new System.Drawing.Point(246, 15);
+            this.CurrentPriceBeerLabel.Location = new System.Drawing.Point(262, 15);
             this.CurrentPriceBeerLabel.Name = "CurrentPriceBeerLabel";
             this.CurrentPriceBeerLabel.Size = new System.Drawing.Size(62, 15);
             this.CurrentPriceBeerLabel.TabIndex = 11;
@@ -184,19 +184,19 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(246, 212);
+            this.button1.Location = new System.Drawing.Point(262, 213);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 23);
+            this.button1.Size = new System.Drawing.Size(147, 23);
             this.button1.TabIndex = 16;
             this.button1.Text = "Done";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.DoneButton_Click);
             // 
             // EditDrink
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 259);
+            this.ClientSize = new System.Drawing.Size(421, 248);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.CurrentPriceCocktailLabel);
             this.Controls.Add(this.CurrentPriceShotLabel);

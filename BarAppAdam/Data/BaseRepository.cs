@@ -10,11 +10,16 @@ namespace BarAppAdam.Data
 {
     public abstract class BaseRepository<TEntity> : IDisposable where TEntity : Entity
     {
-        protected readonly SqlConnection _connection = new SqlConnection("");
+        protected readonly SqlConnection _connection = new("Data Source=(local);Initial Catalog=BarApplication;Integrated Security=True;Pooling=False");
+
+        public BaseRepository()
+        {
+            _connection.Open();
+        }
 
         public TEntity Save(TEntity entity)
         {
-            // Als de speler nog geen Id heeft is hij nog niet opgeslagen
+            // Als de entity nog geen Id heeft is hij nog niet opgeslagen
             if (entity.Id is null)
             {
                 entity = Insert(entity);
