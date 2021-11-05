@@ -1,0 +1,3 @@
+Database setup kan worden gerund in Microsoft SQL DB
+Automatisch word een admin account aangemaakt met ID 1.
+Dit ID (1), geef je in om te starten. Van daar uit kan je met je admin account members aanmaken, dranken aanpassen en DB opvragen.

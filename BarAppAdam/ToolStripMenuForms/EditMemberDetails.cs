@@ -32,8 +32,6 @@ namespace BarAppAdam.ToolStripMenuForms
             LoadMemberIntoFields();
         }
 
-
-
         private void CheckAllChangesAndApply()
         {
             if (FirstNameTextbox.Text == null || LastNameTextbox.Text == null || StreetnameTextbox.Text == null || NrTextbox.Text == null || ZipcodeTextbox.Text == null || CityTextbox.Text == null || CountryTextbox.Text == null || Emailtextbox.Text == null)
@@ -60,7 +58,7 @@ namespace BarAppAdam.ToolStripMenuForms
             {
                 fromRepository.LastName = LastNameTextbox.Text;
             }
-            //Check split addressstrings with appended address string
+            //Paste all addressBoxes on form together to compare to Address string in DB.
             StringBuilder sb = new($"{StreetnameTextbox.Text.ToLower()} {NrTextbox.Text.ToLower()} {ZipcodeTextbox.Text.ToLower()} {CityTextbox.Text.ToLower()} {CountryTextbox.Text.ToLower()}");
 
             if (fromRepository.Address != sb.ToString())

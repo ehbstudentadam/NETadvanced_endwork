@@ -112,7 +112,7 @@ namespace BarAppAdam.ToolStripMenuForms
             CheckAllChangesAndApply();
             LoadDetailsToForm();            
             LoadDrinksToDatabase();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(1000);                    //To let the user check one last time.
             this.Close();
         }
 
@@ -126,12 +126,32 @@ namespace BarAppAdam.ToolStripMenuForms
                 shot = (Shot?)drinkRepository.GetEntity(4);
                 cocktail = (Cocktail?)drinkRepository.GetEntity(5);
             }
-            catch (System.InvalidCastException e)
+            catch (System.InvalidCastException e)               //If you would change sequence of DrinkTable you will trigger this.
             {
                 drinkRepository.TruncateTable();
-                MessageBox.Show($"Drink database has been wrongly manipulated. Table will be truncated and reinitiated. ({e.Message})", "Manipulation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoadDetailsToForm();
+                MessageBox.Show($"Drink database has been wrongly manipulated. Table will be truncated and reinitiated. Original Prices will be set. {Environment.NewLine} ({e.Message})", "Manipulation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+
+            if (beer == null)
+            {
+                drinkRepository.Save(new Beer());
+            }
+            if (wine == null)
+            {
+                drinkRepository.Save(new Wine());
+            }
+            if (softdrink == null)
+            {
+                drinkRepository.Save(new Softdrink());
+            }
+            if (shot == null)
+            {
+                drinkRepository.Save(new Shot());
+            }
+            if (cocktail == null)
+            {
+                drinkRepository.Save(new Cocktail());
             }
         }
     }

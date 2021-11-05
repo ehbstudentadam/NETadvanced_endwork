@@ -19,5 +19,10 @@ namespace BarAppAdam.Entities
             Shot,
             Cocktail            
         }
+
+        public override string ToString()
+        {
+            return $"{Type} €{Price}";
+        }
     }
 }

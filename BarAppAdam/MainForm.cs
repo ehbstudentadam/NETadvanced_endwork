@@ -18,7 +18,6 @@ namespace BarAppAdam
         private Member? member;
 
 
-
         public MainForm()
         {
             InitializeComponent();
@@ -30,45 +29,50 @@ namespace BarAppAdam
             menuStrip1.Hide();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            LoginButton.Enabled = false;
-            string? id = richTextBox1.Text;
-            if (id == null || !int.TryParse(id, out _))
+            LoginButton.Enabled = false;                                            //Disable button to counter spamclicking
+            string? id = IdTextbox.Text;
+            if (id == null || !int.TryParse(id, out _))                             //ID's are numbers. (int)
             {
                 MessageBox.Show("Invallid ID type.", "Invalid IDType", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 LoginButton.Enabled = true;
                 return;
             }
 
-            int memberId = Convert.ToInt32(id);
-            Member? fromRepository = memberRepositorty.GetEntity(memberId);
+            int memberId = Convert.ToInt32(id);                                     //IdTextbox string -> int
+            Member? fromRepository = memberRepositorty.GetEntity(memberId);         //Retrieve member from DB by ID
 
-            if (fromRepository == null)
+            if (fromRepository == null)                                             //No ID found in DB
             {
                 MessageBox.Show("The Member id has not been registered yet.", "Wrong MemberID", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoginButton.Enabled = true;
                 return;
             }
 
-            if (fromRepository.IsOwner)
+            if (fromRepository.IsOwner)                                             //Only owners have acces to advanced menu.
             {
                 menuStrip1.Show();
             }
 
-            OrderWindow orderWindow = new();
+            OrderWindow orderWindow = new(fromRepository);
             orderWindow.TopMost = true;
             orderWindow.Show();
+            orderWindow.Location = new Point((this.ClientSize.Width - orderWindow.Width) / 2, (this.ClientSize.Height - orderWindow.Height) / 2);
+                                                                                    //Center the OrderForm (At least it worked on my screen...)
+            orderWindow.FormClosed += Child_FormClosed;
         }
 
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Child_FormClosed(object? sender, FormClosedEventArgs e)        //Add this event to FormCosed event to re-enable button and allow use by other user
         {
-            DialogResult choice = MessageBox.Show("Exit application?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            IdTextbox.Text = null;
+            LoginButton.Enabled = true;
+            menuStrip1.Hide();
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)        //Only owners can close the program (Keyboard should only be accessible by owner)
+        {
+            DialogResult choice = MessageBox.Show(new Form { TopMost = true}, "Exit application?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (choice == DialogResult.Cancel)
             {
                 return;
@@ -134,14 +138,12 @@ namespace BarAppAdam
             EditDrink editDrink = new();
             editDrink.TopMost = true;
             editDrink.Show();
-
-
         }
 
-        private void LoadDatabaseForFirstTimeUse()
-        {
+        private void LoadDatabaseForFirstTimeUse()                              //This will check Member Table, if empty AND if ID = 1 = "admin"
+        {                                                                       //This will check Drink Table if empty AND if sequence is tampered with.
             try
-            {
+            {                                                                   //Admin account on ID=1 is temporary could later be changed to other ID for safetyreasons.
                 beer = (Beer?)drinkRepository.GetEntity(1);
                 wine = (Wine?)drinkRepository.GetEntity(2);
                 softdrink = (Softdrink?)drinkRepository.GetEntity(3);
@@ -152,7 +154,7 @@ namespace BarAppAdam
             catch (System.InvalidCastException e)
             {
                 drinkRepository.TruncateTable();
-                MessageBox.Show($"Drink database has been wrongly manipulated. Table will be truncated and reinitiated. ({e.Message})", "Manipulation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Drink database has been wrongly manipulated. Table will be truncated and reinitiated. Original Prices will be set. {Environment.NewLine} ({e.Message})", "Manipulation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoadDatabaseForFirstTimeUse();
                 return;
             }
@@ -186,6 +188,14 @@ namespace BarAppAdam
             if (member.FirstName != "admin")
             {
                 memberRepositorty.Save(new Member("admin", "admin", "admin 00 0000 admin admin", "admin", true) { Id = 1 });
+            }
+        }
+
+        private void IdTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoginButton.PerformClick();
             }
         }
     }

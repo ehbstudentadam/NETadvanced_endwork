@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.LoginButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -40,21 +39,14 @@
             this.EditMembersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditDrinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.IdTextbox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(206, 179);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(347, 29);
-            this.richTextBox1.TabIndex = 43;
-            this.richTextBox1.Text = "";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(206, 151);
+            this.label2.Location = new System.Drawing.Point(362, 207);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(347, 15);
             this.label2.TabIndex = 44;
@@ -62,7 +54,7 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(206, 214);
+            this.LoginButton.Location = new System.Drawing.Point(362, 254);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(347, 23);
             this.LoginButton.TabIndex = 45;
@@ -82,7 +74,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(950, 24);
             this.menuStrip1.TabIndex = 47;
             this.menuStrip1.Text = "Settings";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // AddMemberToolStripMenuItem
             // 
@@ -103,14 +94,14 @@
             // OrderHistoryToolStripMenuItem
             // 
             this.OrderHistoryToolStripMenuItem.Name = "OrderHistoryToolStripMenuItem";
-            this.OrderHistoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OrderHistoryToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.OrderHistoryToolStripMenuItem.Text = "Order History";
             this.OrderHistoryToolStripMenuItem.Click += new System.EventHandler(this.OrderHistoryToolStripMenuItem_Click);
             // 
             // MembersToolStripMenuItem
             // 
             this.MembersToolStripMenuItem.Name = "MembersToolStripMenuItem";
-            this.MembersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MembersToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.MembersToolStripMenuItem.Text = "All Members";
             this.MembersToolStripMenuItem.Click += new System.EventHandler(this.MembersToolStripMenuItem_Click);
             // 
@@ -144,14 +135,22 @@
             this.ExitToolStripMenuItem.Text = "Exit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
+            // IdTextbox
+            // 
+            this.IdTextbox.Location = new System.Drawing.Point(362, 225);
+            this.IdTextbox.Name = "IdTextbox";
+            this.IdTextbox.Size = new System.Drawing.Size(347, 23);
+            this.IdTextbox.TabIndex = 49;
+            this.IdTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IdTextbox_KeyDown);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 467);
+            this.Controls.Add(this.IdTextbox);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
@@ -168,7 +167,6 @@
         }
 
         #endregion
-        private RichTextBox richTextBox1;
         private Label label2;
         private Button LoginButton;
         private MenuStrip menuStrip1;
@@ -180,5 +178,6 @@
         private ToolStripMenuItem EditMembersToolStripMenuItem;
         private ToolStripMenuItem EditDrinksToolStripMenuItem;
         private ToolStripMenuItem ExitToolStripMenuItem;
+        private TextBox IdTextbox;
     }
 }

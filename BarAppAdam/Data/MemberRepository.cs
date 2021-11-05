@@ -10,7 +10,7 @@ namespace BarAppAdam.Data
     public class MemberRepository : BaseRepository<Member>
     {
 
-        public List<Member> GetAllFromTill(int from, int untill)         //make sure maximum till overexceeds testing to be done
+        public List<Member> GetAllFromTill(int from, int untill)         //Used to retrieve controled amounts of records to reduce network trafic.
         {
             using var command = _connection.CreateCommand();
             command.CommandText = "SELECT [Id], [Firstname], [Lastname], [Address], [Email], [Wallet], [IsOwner], [CreatedDate] FROM [Members] WHERE [Id] BETWEEN @From AND @Untill";

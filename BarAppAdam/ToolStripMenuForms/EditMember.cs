@@ -44,7 +44,16 @@ namespace BarAppAdam.ToolStripMenuForms
 
             EditMemberDetails editMemberDetails = new(fromRepository);
             editMemberDetails.Show();
+            editMemberDetails.TopMost = true;
             this.Close();
+        }
+
+        private void UserIdTextBox_KeyDown(object sender, KeyEventArgs e)           //When enterKey is pressed, button is clicked.
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                UserIdButtonSearch.PerformClick();
+            }
         }
     }
 }

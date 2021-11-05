@@ -26,8 +26,8 @@ namespace BarAppAdam.Entities
         }
 
 
-        public override string ToString()
-        {
+        public override string ToString()           //This method is used to store a member in the Order Table.
+        {                                           //MemberID is also included in order to link more accurate.
             return $"{FirstName} {LastName}";
         }
 

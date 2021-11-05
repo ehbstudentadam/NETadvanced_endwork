@@ -46,12 +46,12 @@ namespace BarAppAdam
             using var reader = command.ExecuteReader();
             reader.Read();
 
-            if (!reader.HasRows)
+            if (!reader.HasRows)                                                    //Skip if database has no records and return null.
             {
                 return null;
             }
 
-            string drinkTypeFromDatabase = reader.GetString(1);
+            string drinkTypeFromDatabase = reader.GetString(1);                     //Check which Subclass (Beer, Wine, Softdrink, Shot or Cocktail) of Drinks has been retrieved from DB.
             Drink? drinkFromDatabase = null;
 
             if (drinkTypeFromDatabase.Equals(Drink.DrinkType.Beer.ToString()))
@@ -79,13 +79,13 @@ namespace BarAppAdam
                 return null;
             }
             drinkFromDatabase.Id = id;
-            drinkFromDatabase.Price = reader.GetDecimal(2);
+            drinkFromDatabase.Price = reader.GetDecimal(2);                             //Make sure to get latest updated drinkprice from specific subclass. Apply locally.
 
             return drinkFromDatabase; 
         }
 
-        public void TruncateTable()
-        {
+        public void TruncateTable()                                                     //Method used when DB Table Drinks has locally been tempered with.
+        {                                                                               //There is a necessary structure/sequence of drinks (1:Beer, 2:Wine, 3:Softdrink, 4:Shot, 5:Cocktail)
             using var command = _connection.CreateCommand();
             command.CommandText = "TRUNCATE TABLE [Drinks]";
 

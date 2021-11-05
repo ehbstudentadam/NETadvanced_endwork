@@ -43,10 +43,5 @@ namespace BarAppAdam.ToolStripMenuForms
             dataGridView1.DataSource = memberRepository.GetAllFromTill(from, to);
             ShowRecordsFromTillLabel.Text = $"Showing records {from} - {to}";
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

@@ -58,6 +58,7 @@
             this.UserIdTextBox.Name = "UserIdTextBox";
             this.UserIdTextBox.Size = new System.Drawing.Size(285, 23);
             this.UserIdTextBox.TabIndex = 2;
+            this.UserIdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserIdTextBox_KeyDown);
             // 
             // EditMember
             // 

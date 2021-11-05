@@ -36,8 +36,6 @@ namespace BarAppAdam.Data
         protected abstract TEntity Insert(TEntity entity);
         protected abstract void Update(TEntity entity);
 
-
-
         public void Dispose()
         {
             _connection.Close();
