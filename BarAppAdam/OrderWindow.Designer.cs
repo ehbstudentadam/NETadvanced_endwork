@@ -144,9 +144,11 @@
             // 
             // PictureBeer
             // 
+            this.PictureBeer.Image = global::BarAppAdam.Properties.Resources.Beer;
             this.PictureBeer.Location = new System.Drawing.Point(12, 12);
             this.PictureBeer.Name = "PictureBeer";
             this.PictureBeer.Size = new System.Drawing.Size(200, 250);
+            this.PictureBeer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBeer.TabIndex = 69;
             this.PictureBeer.TabStop = false;
             // 
@@ -181,9 +183,11 @@
             // 
             // PictureWine
             // 
+            this.PictureWine.Image = global::BarAppAdam.Properties.Resources.Wine;
             this.PictureWine.Location = new System.Drawing.Point(218, 12);
             this.PictureWine.Name = "PictureWine";
             this.PictureWine.Size = new System.Drawing.Size(200, 250);
+            this.PictureWine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureWine.TabIndex = 91;
             this.PictureWine.TabStop = false;
             // 
@@ -218,9 +222,11 @@
             // 
             // PictureSoftdrink
             // 
+            this.PictureSoftdrink.Image = global::BarAppAdam.Properties.Resources.Softdrink;
             this.PictureSoftdrink.Location = new System.Drawing.Point(424, 12);
             this.PictureSoftdrink.Name = "PictureSoftdrink";
             this.PictureSoftdrink.Size = new System.Drawing.Size(200, 250);
+            this.PictureSoftdrink.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureSoftdrink.TabIndex = 95;
             this.PictureSoftdrink.TabStop = false;
             // 
@@ -255,9 +261,11 @@
             // 
             // PictureShot
             // 
+            this.PictureShot.Image = global::BarAppAdam.Properties.Resources.Shot;
             this.PictureShot.Location = new System.Drawing.Point(12, 354);
             this.PictureShot.Name = "PictureShot";
             this.PictureShot.Size = new System.Drawing.Size(200, 250);
+            this.PictureShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureShot.TabIndex = 99;
             this.PictureShot.TabStop = false;
             // 
@@ -292,9 +300,11 @@
             // 
             // PictureCocktail
             // 
+            this.PictureCocktail.Image = global::BarAppAdam.Properties.Resources.Cocktail;
             this.PictureCocktail.Location = new System.Drawing.Point(218, 354);
             this.PictureCocktail.Name = "PictureCocktail";
             this.PictureCocktail.Size = new System.Drawing.Size(200, 250);
+            this.PictureCocktail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureCocktail.TabIndex = 103;
             this.PictureCocktail.TabStop = false;
             // 
