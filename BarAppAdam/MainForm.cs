@@ -82,7 +82,7 @@ namespace BarAppAdam
 
         private void AddMemberToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<AddMember>().Any())
+            if (Application.OpenForms.OfType<AddMember>().Any())                    //Make sure only one of this kind of forms is open.
             {
                 Application.OpenForms.OfType<AddMember>().First().Show();
                 return;
@@ -93,14 +93,14 @@ namespace BarAppAdam
         }
 
         private void OrderHistoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {            
             if (Application.OpenForms.OfType<ViewOrderHistory>().Any())
             {
                 Application.OpenForms.OfType<ViewOrderHistory>().First().Show();
                 return;
             }
             ViewOrderHistory viewOrderHistory = new();
-            viewOrderHistory.TopMost = true;
+            viewOrderHistory.TopMost = true;            
             viewOrderHistory.Show();
         }
 
@@ -197,6 +197,18 @@ namespace BarAppAdam
             {
                 LoginButton.PerformClick();
             }
+        }
+
+        private void MemberOrderHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<ViewMemberOrders>().Any())
+            {
+                Application.OpenForms.OfType<ViewMemberOrders>().First().Show();
+                return;
+            }
+            ViewMemberOrders viewMemberOrders = new();
+            viewMemberOrders.TopMost = true;
+            viewMemberOrders.Show();
         }
     }
 }

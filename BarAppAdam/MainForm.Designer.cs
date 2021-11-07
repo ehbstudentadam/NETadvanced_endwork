@@ -40,6 +40,7 @@
             this.EditDrinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IdTextbox = new System.Windows.Forms.TextBox();
+            this.MemberOrderHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +87,8 @@
             // 
             this.settingsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OrderHistoryToolStripMenuItem,
-            this.MembersToolStripMenuItem});
+            this.MembersToolStripMenuItem,
+            this.MemberOrderHistoryToolStripMenuItem});
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
             this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
             this.settingsToolStripMenuItem1.Text = "View";
@@ -94,14 +96,14 @@
             // OrderHistoryToolStripMenuItem
             // 
             this.OrderHistoryToolStripMenuItem.Name = "OrderHistoryToolStripMenuItem";
-            this.OrderHistoryToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.OrderHistoryToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.OrderHistoryToolStripMenuItem.Text = "Order History";
             this.OrderHistoryToolStripMenuItem.Click += new System.EventHandler(this.OrderHistoryToolStripMenuItem_Click);
             // 
             // MembersToolStripMenuItem
             // 
             this.MembersToolStripMenuItem.Name = "MembersToolStripMenuItem";
-            this.MembersToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.MembersToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.MembersToolStripMenuItem.Text = "All Members";
             this.MembersToolStripMenuItem.Click += new System.EventHandler(this.MembersToolStripMenuItem_Click);
             // 
@@ -143,6 +145,13 @@
             this.IdTextbox.TabIndex = 49;
             this.IdTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IdTextbox_KeyDown);
             // 
+            // MemberOrderHistoryToolStripMenuItem
+            // 
+            this.MemberOrderHistoryToolStripMenuItem.Name = "MemberOrderHistoryToolStripMenuItem";
+            this.MemberOrderHistoryToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.MemberOrderHistoryToolStripMenuItem.Text = "Member Order History";
+            this.MemberOrderHistoryToolStripMenuItem.Click += new System.EventHandler(this.MemberOrderHistoryToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -179,5 +188,6 @@
         private ToolStripMenuItem EditDrinksToolStripMenuItem;
         private ToolStripMenuItem ExitToolStripMenuItem;
         private TextBox IdTextbox;
+        private ToolStripMenuItem MemberOrderHistoryToolStripMenuItem;
     }
 }

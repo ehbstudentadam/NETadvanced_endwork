@@ -125,7 +125,7 @@ namespace BarAppAdam
         {
             if (counterCocktail == 0)
             {
-
+                return;
             }
             ViewOrder.Items.RemoveByKey($"Cocktail {counterCocktail}");
             counterCocktail--;
@@ -212,12 +212,16 @@ namespace BarAppAdam
 
         private void Done_Click(object sender, EventArgs e)
         {
+            if (counterBeer == 0 && counterWine == 0 && counterSoftdrink == 0 && counterShots == 0 && counterCocktail ==0)
+            {
+                this.Close();                                                             //Don't save an order to DB if nothing is added.
+            }
             if (beer == null || wine == null || softdrink == null || shot == null || cocktail == null || member == null)
             {
                 return;
             }
 
-            List<KeyValuePair<Drink, int>> drinkList = new List<KeyValuePair<Drink, int>>()
+            List<KeyValuePair<Drink, int>> drinkList = new()
             {
                 new KeyValuePair<Drink, int>(beer, counterBeer),
                 new KeyValuePair<Drink, int>(wine, counterWine),

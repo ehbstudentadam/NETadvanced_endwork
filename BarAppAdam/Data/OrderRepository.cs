@@ -47,16 +47,57 @@ namespace BarAppAdam.Data
             return order;            
         }
 
-        public List<Order> GetAllFromTill(int from, int untill)                             //Retreive parts of database to reduce networktraffic and waiting times.
+        public List<Order> GetLastXAmountSkipByX(int recordCount, int toSkipRows)                             //Retreive parts of database to reduce networktraffic and waiting times.
         {
             using var command = _connection.CreateCommand();
-            command.CommandText = "SELECT [Id], [CreatedDate], [Member], [MemberID], [Drinks], [PriceTotal] FROM [Orders] WHERE [Id] BETWEEN @From AND @Untill";
-            command.Parameters.AddWithValue("@From", from);
-            command.Parameters.AddWithValue("@Untill", untill);
+            command.CommandText = "SELECT [Id], [CreatedDate], [Member], [MemberID], [Drinks], [PriceTotal] FROM [Orders] ORDER BY [Id] DESC OFFSET @ToSkipRows ROW FETCH NEXT @RecordCount ROWS ONLY";
+            command.Parameters.AddWithValue("@RecordCount", recordCount);
+            command.Parameters.AddWithValue("@ToSkipRows", toSkipRows);
+
 
             using var reader = command.ExecuteReader();
 
             var orders = new List<Order>();
+            while (reader.Read())
+            {
+                int databaseId = reader.GetInt32(0);
+                DateTime dateTime = DateTime.Parse(reader.GetString(1));
+                int memberID = reader.GetInt32(3);
+                Member? member = memberRepository.GetEntity(memberID);
+                List<KeyValuePair<Drink, int>> drinks = ConvertStringToKVList(reader.GetString(4));
+
+                if (member == null)
+                {
+                    throw new Exception("memberID not found when retrieving member from database.");
+                }
+                Order order = new(member, drinks);
+                order.CreatedDate = dateTime;
+                order.Id = databaseId;
+                order.PriceTotal = reader.GetDecimal(5);
+
+                orders.Add(order);
+            }
+            return orders;
+        }
+
+
+        public List<Order> GetAllFromMemberTill(int recordCount, int toSkipRows, int? memberId)                             //Retrieve last Xamount of records, skip first Xamount.
+        {
+            var orders = new List<Order>();
+
+            if (memberId == null)
+            {
+                return orders;
+            }
+
+            using var command = _connection.CreateCommand();
+            command.CommandText = "SELECT [Id], [CreatedDate], [Member], [MemberID], [Drinks], [PriceTotal] FROM [Orders] WHERE [MemberID] = @MemberId ORDER BY [CreatedDate] DESC OFFSET @ToSkipRows ROW FETCH NEXT @RecordCount ROWS ONLY";
+            command.Parameters.AddWithValue("MemberId", memberId);
+            command.Parameters.AddWithValue("@RecordCount", recordCount);
+            command.Parameters.AddWithValue("@ToSkipRows", toSkipRows);
+
+            using var reader = command.ExecuteReader();
+            
             while (reader.Read())
             {
                 int databaseId = reader.GetInt32(0);
