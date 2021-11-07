@@ -17,7 +17,7 @@ namespace BarAppAdam.ToolStripMenuForms
         private readonly MemberRepository memberRepository = new();
         private readonly OrderRepository orderRepository = new();
         private Member? member;
-        private readonly int rowCount = 10;
+        private readonly int rowCount = 10;                 //Amount of records can soly be adjusted here
         private int offSet = 0;
 
         public ViewMemberOrders()

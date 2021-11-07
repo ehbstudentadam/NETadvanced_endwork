@@ -32,12 +32,12 @@ namespace BarAppAdam.ToolStripMenuForms
             LoadMemberIntoFields();
         }
 
-        private void CheckAllChangesAndApply()
+        private bool CheckAllChangesAndApply()
         {
-            if (FirstNameTextbox.Text == null || LastNameTextbox.Text == null || StreetnameTextbox.Text == null || NrTextbox.Text == null || ZipcodeTextbox.Text == null || CityTextbox.Text == null || CountryTextbox.Text == null || Emailtextbox.Text == null)
+            if (FirstNameTextbox.Text == "" || LastNameTextbox.Text == "" || StreetnameTextbox.Text == "" || NrTextbox.Text == "" || ZipcodeTextbox.Text == "" || CityTextbox.Text == "" || CountryTextbox.Text == "" || Emailtextbox.Text == "")
             {
                 MessageBox.Show("Information not complete.", "Empty field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return false;
             }
 
             if (AddAmountTextbox.Text != null && decimal.TryParse(AddAmountTextbox.Text, out _))
@@ -73,6 +73,7 @@ namespace BarAppAdam.ToolStripMenuForms
             {
                 fromRepository.IsOwner = IsOwnerCheckbox.Checked;
             }
+            return true;
         }
 
         private void LoadMemberIntoFields()
@@ -94,13 +95,16 @@ namespace BarAppAdam.ToolStripMenuForms
 
         private void DoneButton_Click(object sender, EventArgs e)
         {
-            CheckAllChangesAndApply();
-            AddAmountTextbox.Text = null;
-            RemoveAmountTextbox.Text = null;
-            LoadMemberIntoFields();            
-            memberRepository.Save(fromRepository);
-            System.Threading.Thread.Sleep(1000);
-            this.Close();
+            if (CheckAllChangesAndApply())
+            {
+                AddAmountTextbox.Text = null;
+                RemoveAmountTextbox.Text = null;
+                LoadMemberIntoFields();
+                memberRepository.Save(fromRepository);
+                System.Threading.Thread.Sleep(1000);
+                this.Close();
+            }
+            else return;            
         }
     }
 }

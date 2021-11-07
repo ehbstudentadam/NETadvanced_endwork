@@ -23,12 +23,12 @@ namespace BarAppAdam
 
         private void AddMemberButton_Click(object sender, EventArgs e)
         {
-            if (Emailtextbox.Text == null)
+            if (Emailtextbox.Text == "")
             {
                 MessageBox.Show("Email must be filled in. Will be used to send inqueries and balances.", "Email empty", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            else if (FirstNameTextbox.Text == null || LastNameTextbox.Text == null || StreetnameTextbox.Text == null || NrTextbox.Text == null || ZipcodeTextbox.Text == null || CityTextbox.Text == null || CountryTextbox.Text == null)
+            else if (FirstNameTextbox.Text == "" || LastNameTextbox.Text == "" || StreetnameTextbox.Text == "" || NrTextbox.Text == "" || ZipcodeTextbox.Text == "" || CityTextbox.Text == "" || CountryTextbox.Text == "")
             {
                 MessageBox.Show("Information not complete.", "Empty field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
